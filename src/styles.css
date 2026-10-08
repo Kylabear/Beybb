@@ -207,12 +207,18 @@ button:focus-visible, input:focus-visible, a:focus-visible {
 .final-heading h1 em { color: #a75d68; font-weight: 500; }
 .final-heading h1 span { font-family: sans-serif; font-size: .58em; vertical-align: 13%; }
 .final-heading p { margin: 11px 0 0; color: var(--muted); font-family: Georgia, serif; font-size: 12px; font-style: italic; }
-.heart-canvas { position: relative; isolation: isolate; display: grid; width: min(100%, 570px); height: clamp(310px, 58vw, 440px); place-items: center; margin: 2px auto 2px; }
-.heart-canvas::before { position: absolute; z-index: -1; inset: 8% 14%; border-radius: 50%; background: radial-gradient(ellipse, rgba(218, 157, 157, .25), rgba(244, 215, 204, .13) 47%, transparent 74%); filter: blur(18px); content: ""; }
-.heart-typography { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.heart-outline-path { fill: rgba(255, 249, 246, .12); stroke: rgba(171, 93, 105, .55); stroke-width: 1.6; filter: drop-shadow(0 0 8px rgba(171, 93, 105, .24)); }
-.heart-curved-line { fill: #713641; font-family: Georgia, "Times New Roman", serif; font-style: italic; font-weight: 600; letter-spacing: .2px; paint-order: stroke; stroke: rgba(255, 250, 247, .84); stroke-linejoin: round; stroke-width: 1.1px; filter: drop-shadow(0 1px 3px rgba(112, 48, 62, .21)); }
-.heart-halo { position: absolute; z-index: -1; width: 40%; height: 42%; border-radius: 50%; background: rgba(205, 127, 136, .14); filter: blur(23px); }
+.heart-canvas { position: relative; isolation: isolate; display: grid; width: min(100%, 660px); height: clamp(345px, 64vw, 490px); place-items: center; margin: 5px auto 1px; overflow: visible; perspective: 900px; transform-style: preserve-3d; }
+.heart-canvas::before { position: absolute; z-index: -2; inset: 8% 14%; border-radius: 50%; background: radial-gradient(ellipse, rgba(218, 157, 157, .34), rgba(244, 215, 204, .16) 48%, transparent 74%); filter: blur(22px); content: ""; }
+.heart-3d-halo { position: absolute; z-index: -1; width: 46%; height: 48%; border: 1px solid rgba(196, 122, 132, .15); border-radius: 50%; background: radial-gradient(ellipse, rgba(206, 133, 142, .2), rgba(236, 189, 184, .07) 53%, transparent 72%); box-shadow: 0 0 54px rgba(184, 106, 119, .15), inset 0 0 30px rgba(255, 255, 255, .48); filter: blur(2px); transform: rotateX(62deg) rotateZ(-10deg); transform-style: preserve-3d; }
+.hero-heart-3d { position: absolute; z-index: 0; display: grid; width: clamp(190px, 42vw, 310px); height: clamp(190px, 42vw, 310px); place-items: center; color: rgba(197, 107, 124, .42); filter: drop-shadow(9px 17px 9px rgba(112, 58, 68, .2)) drop-shadow(0 0 32px rgba(188, 107, 124, .34)); transform-style: preserve-3d; }
+.hero-heart-3d svg { position: absolute; width: 100%; height: 100%; }
+.hero-heart-back { transform: translate3d(11px, 12px, -25px) rotate(-8deg) scale(.96); color: rgba(151, 71, 91, .38); }
+.hero-heart-front { transform: translate3d(-5px, -5px, 24px) rotate(5deg); color: rgba(211, 132, 143, .44); }
+.heart-phrase-field { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; overflow: visible; transform-style: preserve-3d; }
+.heart-fill-line { fill: #a74365; font-family: Georgia, "Times New Roman", serif; font-weight: 700; letter-spacing: .25px; paint-order: stroke; stroke: rgba(250, 220, 225, .36); stroke-width: .65px; filter: drop-shadow(0 0 2px rgba(199, 91, 125, .7)) drop-shadow(0 0 7px rgba(177, 76, 111, .48)); }
+.floating-object { position: absolute; display: grid; place-items: center; color: #b96979; filter: drop-shadow(0 5px 5px rgba(117, 68, 77, .2)); transform-style: preserve-3d; will-change: transform, opacity; }
+.floating-object-heart { color: #bd6879; }
+.floating-object-star { color: #bd9770; }
 .heart-sparkle { position: absolute; z-index: 2; color: #b06b73; filter: drop-shadow(0 0 5px rgba(171,93,105,.3)); }
 .heart-sparkle-1 { top: 20%; left: 16%; }
 .heart-sparkle-2 { top: 34%; right: 12%; }
@@ -253,8 +259,9 @@ button:focus-visible, input:focus-visible, a:focus-visible {
   .final-heading .eyebrow { margin-bottom: 14px; }
   .final-heading h1 { font-size: clamp(29px, 8.2vw, 42px); }
   .final-heading p { max-width: 300px; margin: 10px auto 0; font-size: 11px; line-height: 1.5; }
-  .heart-canvas { width: min(100%, 440px); height: clamp(295px, 88vw, 370px); margin-top: 11px; }
-  .heart-typography { inset: 2% 0; width: 100%; height: 96%; }
+  .heart-canvas { width: min(100%, 460px); height: clamp(315px, 92vw, 390px); margin-top: 9px; }
+  .hero-heart-3d { width: clamp(170px, 53vw, 245px); height: clamp(170px, 53vw, 245px); }
+  .floating-object { transform: scale(.8); }
   .final-signoff { gap: 6px; font-size: 13px; }
 }
 

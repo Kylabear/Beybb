@@ -1,55 +1,41 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { Sparkles, Star } from 'lucide-react'
+import { Heart, Sparkles, Star } from 'lucide-react'
 
-const phrase = 'I love you so much beybb'
+const phrase = 'I love you beybb'
 
-const heartRows = [
-  {
-    path: 'M65 147 C84 72 230 48 300 143 C370 48 516 72 535 147',
-    copies: 2,
-    size: 18,
-  },
-  {
-    path: 'M54 163 C150 191 245 189 300 158 C355 189 450 191 546 163',
-    copies: 2,
-    size: 17,
-  },
-  {
-    path: 'M61 194 C160 219 250 219 300 193 C350 219 440 219 539 194',
-    copies: 2,
-    size: 16,
-  },
-  {
-    path: 'M72 225 C164 249 250 249 300 226 C350 249 436 249 528 225',
-    copies: 2,
-    size: 15,
-  },
-  {
-    path: 'M91 256 C172 277 255 278 300 259 C345 278 428 277 509 256',
-    copies: 2,
-    size: 14,
-  },
-  {
-    path: 'M115 287 C185 305 260 307 300 291 C340 307 415 305 485 287',
-    copies: 2,
-    size: 13,
-  },
-  {
-    path: 'M145 317 C205 334 265 335 300 321 C335 335 395 334 455 317',
-    copies: 1,
-    size: 22,
-  },
-  {
-    path: 'M180 346 C225 360 270 361 300 351 C330 361 375 360 420 346',
-    copies: 1,
-    size: 18,
-  },
-  {
-    path: 'M223 374 C255 385 280 386 300 378 C320 386 345 385 377 374',
-    copies: 1,
-    size: 13,
-    textLength: 150,
-  },
+interface PhraseRow {
+  y: number
+  width: number
+  copies: number
+  size: number
+  centers?: number[]
+}
+
+const phraseRows: PhraseRow[] = [
+  { y: 79, width: 158, copies: 1, size: 16, centers: [210, 390] },
+  { y: 105, width: 205, copies: 1, size: 17, centers: [195, 405] },
+  { y: 131, width: 430, copies: 3, size: 15 },
+  { y: 157, width: 505, copies: 3, size: 17 },
+  { y: 183, width: 545, copies: 4, size: 14 },
+  { y: 209, width: 545, copies: 4, size: 14 },
+  { y: 235, width: 525, copies: 3, size: 17 },
+  { y: 261, width: 485, copies: 3, size: 16 },
+  { y: 287, width: 420, copies: 3, size: 14 },
+  { y: 313, width: 345, copies: 2, size: 17 },
+  { y: 339, width: 260, copies: 2, size: 14 },
+  { y: 365, width: 180, copies: 1, size: 18 },
+]
+
+const floatingObjects = [
+  { x: 9, y: 26, size: 30, depth: 55, delay: 0.1, kind: 'heart' },
+  { x: 88, y: 29, size: 20, depth: -35, delay: 0.8, kind: 'star' },
+  { x: 17, y: 63, size: 15, depth: 25, delay: 1.2, kind: 'star' },
+  { x: 82, y: 58, size: 29, depth: -55, delay: 0.45, kind: 'heart' },
+  { x: 27, y: 87, size: 17, depth: 45, delay: 1.6, kind: 'heart' },
+  { x: 74, y: 84, size: 19, depth: -20, delay: 1, kind: 'star' },
+  { x: 50, y: 8, size: 17, depth: 35, delay: 1.9, kind: 'star' },
+  { x: 4, y: 47, size: 13, depth: -45, delay: 2.1, kind: 'heart' },
+  { x: 96, y: 43, size: 14, depth: 30, delay: 1.35, kind: 'star' },
 ]
 
 export function HeartAnimation() {
@@ -60,102 +46,180 @@ export function HeartAnimation() {
       className="final-scene"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      aria-label="A heart made of loving messages"
+      transition={{ duration: reduceMotion ? 0 : 0.8 }}
+      aria-label="A floating 3D love scene"
     >
       <motion.div
         className="final-heading"
-        initial={{ opacity: 0, y: 24, scale: 0.92, filter: 'blur(7px)' }}
+        initial={reduceMotion ? undefined : { opacity: 0, y: 24, scale: 0.92, filter: 'blur(7px)' }}
         animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-        transition={{ duration: 1, ease: 'easeOut' }}
+        transition={{ duration: reduceMotion ? 0 : 1, ease: 'easeOut' }}
       >
         <div className="eyebrow"><span /> THE BEST PART <span /></div>
-        <h1>I LOVE YOU SO MUCH,<br /><em>BEYBB</em> <span>❤️</span></h1>
-        <p>In every little way, today and always.</p>
+        <h1>I LOVE YOU,<br /><em>BEYBB</em> <span>❤️</span></h1>
+        <p>One little phrase, a million different ways.</p>
       </motion.div>
+
       <div
         className="heart-canvas"
         role="img"
-        aria-label={`Heart-shaped arrangement of ${phrase} phrases`}
+        aria-label={`A three-dimensional floating heart filled with ${phrase} messages and stars`}
       >
-        <motion.svg
-          className="heart-typography"
-          viewBox="0 0 600 430"
+        <motion.div
+          className="heart-3d-halo"
           aria-hidden="true"
-          animate={reduceMotion ? undefined : { scale: [0.99, 1.015, 0.99] }}
-          transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+          animate={reduceMotion ? undefined : {
+            scale: [0.84, 1.13, 0.84],
+            opacity: [0.28, 0.68, 0.28],
+            rotate: [0, 12, 0],
+          }}
+          transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+        />
+
+        <motion.div
+          className="hero-heart-3d"
+          aria-hidden="true"
+          initial={reduceMotion ? undefined : { opacity: 0, scale: 0.35, rotateY: -55, rotateZ: -18 }}
+          animate={reduceMotion
+            ? { opacity: 0.42, scale: 1 }
+            : {
+                opacity: [0.3, 0.52, 0.3],
+                scale: [0.94, 1.08, 0.94],
+                rotateY: [-24, 24, -24],
+                rotateZ: [-7, 7, -7],
+              }}
+          transition={{
+            opacity: { duration: 4.2, repeat: Infinity, ease: 'easeInOut' },
+            scale: { duration: 4.2, repeat: Infinity, ease: 'easeInOut' },
+            rotateY: { duration: 7, repeat: Infinity, ease: 'easeInOut' },
+            rotateZ: { duration: 5, repeat: Infinity, ease: 'easeInOut' },
+            default: { duration: 1.25, ease: 'easeOut' },
+          }}
         >
-          <defs>
-            {heartRows.map((row, index) => (
-              <path d={row.path} id={`heart-text-line-${index}`} key={index} />
-            ))}
-          </defs>
-          <motion.path
-            className="heart-outline-path"
-            d="M300 404 C269 376 49 235 49 118 C49 20 184 2 300 97 C416 2 551 20 551 118 C551 235 331 376 300 404Z"
-            initial={reduceMotion ? undefined : { pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 1.7, delay: 0.2, ease: 'easeInOut' }}
-          />
-          {heartRows.map((row, index) => {
-            const text = Array.from({ length: row.copies }, () => phrase).join('   ♥   ')
-            return (
+          <Heart className="hero-heart-back" fill="currentColor" strokeWidth={0.8} />
+          <Heart className="hero-heart-front" fill="currentColor" strokeWidth={0.8} />
+        </motion.div>
+
+        <motion.svg
+          className="heart-phrase-field"
+          viewBox="0 0 600 430"
+          role="presentation"
+          aria-hidden="true"
+          initial={reduceMotion ? undefined : { opacity: 0, scale: 0.92 }}
+          animate={reduceMotion ? { opacity: 1, scale: 1 } : {
+            opacity: [0.9, 1, 0.9],
+            scale: [1, 1.012, 1],
+            rotateY: [-2, 2, -2],
+          }}
+          transition={{
+            opacity: { duration: 3.8, repeat: Infinity, ease: 'easeInOut' },
+            scale: { duration: 4.8, repeat: Infinity, ease: 'easeInOut' },
+            rotateY: { duration: 9, repeat: Infinity, ease: 'easeInOut' },
+            default: { duration: 1.1, ease: 'easeOut' },
+          }}
+        >
+          {phraseRows.flatMap((row, index) => {
+            const centers = row.centers ?? [300]
+            return centers.map((center, segmentIndex) => (
               <motion.text
-                className="heart-curved-line"
-                key={index}
+                className="heart-fill-line"
+                key={`${row.y}-${segmentIndex}`}
+                x={center}
+                y={row.y}
                 textAnchor="middle"
                 fontSize={row.size}
-                initial={reduceMotion ? undefined : { opacity: 0, y: 5 }}
-                animate={
-                  reduceMotion
-                    ? { opacity: 1 }
-                    : { opacity: [0.82, 1, 0.82], y: [0, -1, 0] }
-                }
+                textLength={row.width}
+                lengthAdjust="spacing"
+                initial={reduceMotion ? undefined : { opacity: 0, y: 9 }}
+                animate={reduceMotion
+                  ? { opacity: 1 }
+                  : { opacity: [0.82, 1, 0.82], y: [0, index % 2 ? -1.4 : 1.4, 0] }}
                 transition={{
-                  duration: 3 + (index % 3) * 0.35,
-                  delay: reduceMotion ? 0 : 0.35 + index * 0.22,
+                  duration: 3.1 + (index % 4) * 0.3,
+                  delay: reduceMotion ? 0 : 0.25 + index * 0.1 + segmentIndex * 0.08,
                   repeat: reduceMotion ? 0 : Infinity,
                   ease: 'easeInOut',
                 }}
               >
-                <textPath
-                  href={`#heart-text-line-${index}`}
-                  startOffset="50%"
-                  textLength={row.textLength}
-                  lengthAdjust={row.textLength ? 'spacingAndGlyphs' : undefined}
-                >
-                  {text}
-                </textPath>
+                {Array.from({ length: row.copies }, () => phrase).join('   ♥   ')}
               </motion.text>
-            )
+            ))
           })}
         </motion.svg>
-        <motion.div
-          className="heart-halo"
-          aria-hidden="true"
-          animate={reduceMotion ? undefined : { scale: [0.88, 1.1, 0.88], opacity: [0.3, 0.58, 0.3] }}
-          transition={{ duration: 3.8, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        {[0, 1, 2, 3].map((sparkle) => (
+
+        {floatingObjects.map((object, index) => (
+          <motion.span
+            className={`floating-object floating-object-${object.kind}`}
+            key={`${object.kind}-${index}`}
+            style={{
+              left: `${object.x}%`,
+              top: `${object.y}%`,
+              width: object.size,
+              height: object.size,
+              transformPerspective: 700,
+              zIndex: index % 2 ? 4 : 0,
+            }}
+            aria-hidden="true"
+            initial={reduceMotion ? undefined : {
+              opacity: 0,
+              scale: 0,
+              rotateX: -60,
+              rotateY: 55,
+            }}
+            animate={reduceMotion
+              ? { opacity: 0.8, scale: 1 }
+              : {
+                  opacity: [0.45, 1, 0.45],
+                  y: [0, index % 2 ? -19 : 15, 0],
+                  x: [0, index % 2 ? 7 : -7, 0],
+                  scale: [0.82, 1.12, 0.82],
+                  rotateX: [0, object.depth, 0],
+                  rotateY: [0, object.depth * -0.6, 0],
+                  rotateZ: [0, index % 2 ? 65 : -65, 0],
+                }}
+            transition={{
+              duration: reduceMotion ? 0 : 3.5 + (index % 4) * 0.65,
+              delay: reduceMotion ? 0 : object.delay,
+              repeat: reduceMotion ? 0 : Infinity,
+              ease: 'easeInOut',
+            }}
+          >
+            {object.kind === 'heart'
+              ? <Heart size={object.size} fill="currentColor" strokeWidth={1} />
+              : <Star size={object.size} fill="currentColor" strokeWidth={1} />}
+          </motion.span>
+        ))}
+
+        {[0, 1, 2, 3, 4, 5].map((sparkle) => (
           <motion.span
             className={`heart-sparkle heart-sparkle-${sparkle + 1}`}
             key={sparkle}
             aria-hidden="true"
-            animate={reduceMotion ? undefined : { opacity: [0.25, 1, 0.25], scale: [0.7, 1.2, 0.7], rotate: [0, 45, 90] }}
-            transition={{ duration: 2.2 + sparkle * 0.25, delay: sparkle * 0.4, repeat: Infinity }}
+            animate={reduceMotion ? undefined : {
+              opacity: [0.2, 1, 0.2],
+              scale: [0.65, 1.25, 0.65],
+              rotate: [0, 60, 120],
+              y: [0, -7, 0],
+            }}
+            transition={{
+              duration: 2.2 + sparkle * 0.25,
+              delay: sparkle * 0.3,
+              repeat: Infinity,
+            }}
           >
-            <Star size={sparkle % 2 ? 12 : 16} fill="currentColor" />
+            <Sparkles size={sparkle % 2 ? 13 : 17} />
           </motion.span>
         ))}
       </div>
+
       <motion.div
         className="final-signoff"
-        initial={{ opacity: 0, y: 12, scale: 0.92 }}
+        initial={reduceMotion ? undefined : { opacity: 0, y: 12, scale: 0.92 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ delay: 1.8, duration: 0.8, type: 'spring' }}
+        transition={{ delay: reduceMotion ? 0 : 1.8, duration: 0.8, type: 'spring' }}
       >
         <Sparkles size={15} aria-hidden="true" />
-        <span>I love you so much, beybb.</span>
+        <span>I love you, beybb.</span>
         <span className="always">Always. 💋</span>
         <Sparkles size={15} aria-hidden="true" />
       </motion.div>
