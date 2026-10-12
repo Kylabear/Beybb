@@ -63,7 +63,7 @@ export function Letter({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.55, duration: 0.55 }}
         >
-          <div className="letter-date">A birthday note from me to you</div>
+          <div className="letter-date">for you beybb</div>
           <TypingText text={letterText} onComplete={complete} />
           {typingComplete && (
             <>

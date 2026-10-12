@@ -179,14 +179,12 @@ export function BouquetAnimation() {
             stroke="#b57527"
             strokeWidth="2"
           />
-          <path d="M176 299 L78 158 L105 311 L254 394 L279 347Z" fill="#e8a72d" stroke="#c47b24" strokeWidth="2" />
-          <path d="M424 299 L522 158 L495 311 L346 394 L321 347Z" fill="#e8a72d" stroke="#c47b24" strokeWidth="2" />
-          <path d="M176 299 L103 194 L150 316 L254 394 L235 338Z" fill="#ffd86b" opacity=".83" />
-          <path d="M424 299 L497 194 L450 316 L346 394 L365 338Z" fill="#f4c04d" opacity=".78" />
-          <path d="M143 297 Q218 322 285 327 L234 414Z" fill="#fff0a1" opacity=".53" />
-          <path d="M457 297 Q382 322 315 327 L366 414Z" fill="#a85c1d" opacity=".2" />
-          <path d="M159 305 Q300 353 441 305 L359 399 Q300 428 241 399Z" fill="none" stroke="url(#bouquet-paper-fold)" strokeWidth="4" opacity=".88" />
-          <path d="M190 318 Q255 355 267 414 M410 318 Q345 355 333 414" fill="none" stroke="#fff1b4" strokeWidth="3" opacity=".55" />
+          <path d="M151 300 Q211 324 279 331 L234 414 Q187 389 151 300Z" fill="#ffd86b" opacity=".78" />
+          <path d="M449 300 Q389 324 321 331 L366 414 Q413 389 449 300Z" fill="#c98227" opacity=".42" />
+          <path d="M188 313 Q238 332 300 339 Q362 332 412 313 L359 399 Q300 428 241 399Z" fill="url(#bouquet-paper-fold)" opacity=".74" />
+          <path d="M159 306 Q300 350 441 306 L359 399 Q300 428 241 399Z" fill="none" stroke="#fff0b0" strokeWidth="3" opacity=".85" />
+          <path d="M143 297 Q300 340 457 297" fill="none" stroke="#fff3c5" strokeWidth="4" strokeLinecap="round" />
+          <path d="M190 318 Q255 355 267 414 M410 318 Q345 355 333 414" fill="none" stroke="#fff8d8" strokeWidth="2" opacity=".72" />
           <path d="M198 354 Q300 390 402 354 L385 391 Q300 420 215 391Z" fill="#b78855" stroke="#8c603b" strokeWidth="1.5" />
           <path d="M198 354 Q300 390 402 354 L385 391 Q300 420 215 391Z" fill="url(#burlap-weave)" opacity=".72" />
 
