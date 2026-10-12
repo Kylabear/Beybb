@@ -3,7 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { Heart, Sparkles } from 'lucide-react'
 import { BirthdatePrompt } from './components/BirthdatePrompt'
 import { FloatingHearts } from './components/FloatingHearts'
-import { HeartAnimation } from './components/HeartAnimation'
+import { BouquetAnimation } from './components/BouquetAnimation'
 import { Letter } from './components/Letter'
 import { ParticleBackground } from './components/ParticleBackground'
 import { PlayfulButton } from './components/PlayfulButton'
@@ -119,7 +119,7 @@ function App() {
             />
           )}
 
-          {stage === 'final' && <HeartAnimation key="final" />}
+          {stage === 'final' && <BouquetAnimation key="final" />}
         </AnimatePresence>
       </div>
 
