@@ -142,7 +142,7 @@ function App() {
       <footer className="site-footer">
         <span>made with <Heart size={11} fill="currentColor" /> just for my beybbii</span>
         <span className="footer-dot">✦</span>
-        <span>take your time, beybb</span>
+        <span>I'll be here always, beybb</span>
       </footer>
     </main>
   )

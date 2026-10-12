@@ -167,6 +167,8 @@ button:focus-visible, input:focus-visible, a:focus-visible {
 .letter-card .tiny-note { margin-top: 14px; }
 .letter-content { position: relative; z-index: 5; width: min(100%, 490px); margin: 0 auto; padding: 19px 21px; border: 1px solid rgba(171, 129, 116, .15); border-radius: 13px; background: rgba(255, 252, 247, .97); box-shadow: 0 8px 22px rgba(113,73,76,.07); text-align: left; }
 .letter-date { margin-bottom: 10px; color: #ae7478; font-family: Georgia, serif; font-size: 11px; font-style: italic; }
+.letter-stickers { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 13px; }
+.letter-stickers span { display: grid; width: 33px; height: 33px; place-items: center; border: 1px solid rgba(189, 108, 118, .16); border-radius: 11px; background: linear-gradient(145deg, #fff, #f9e9e4); box-shadow: 0 4px 10px rgba(157, 82, 95, .09); font-size: 17px; }
 .letter-copy { margin: 0; color: #503b3e; font-family: Georgia, serif; font-size: 14px; line-height: 1.85; white-space: pre-wrap; }
 .typing-cursor { display: inline-block; margin-left: 1px; color: #b56570; font-size: .95em; }
 .letter-next-hint { margin: 16px 0 0; color: #85666a; font-family: Georgia, serif; font-size: 12px; font-style: italic; text-align: center; }
