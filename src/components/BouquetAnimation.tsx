@@ -2,39 +2,47 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { Sparkles } from 'lucide-react'
 
 const flowers = [
-  { x: 155, y: 156, size: 0.78, color: '#f7c94e', shade: '#d89a32', center: '#6e4930', delay: 0.05, sunflower: true },
-  { x: 195, y: 131, size: 1, color: '#cf6f83', shade: '#a94f68', center: '#f4c875', delay: 0.1, sunflower: false },
-  { x: 300, y: 91, size: 1.13, color: '#e99b70', shade: '#c57559', center: '#f7d78e', delay: 0.35, sunflower: false },
-  { x: 405, y: 129, size: 0.96, color: '#e9a3a2', shade: '#bf737b', center: '#f5d183', delay: 0.55, sunflower: false },
-  { x: 445, y: 160, size: 0.78, color: '#f7c94e', shade: '#d89a32', center: '#6e4930', delay: 0.7, sunflower: true },
-  { x: 252, y: 181, size: 0.79, color: '#d895b1', shade: '#ae6e91', center: '#f5d27c', delay: 0.75, sunflower: false },
-  { x: 302, y: 178, size: 0.76, color: '#f4c4c3', shade: '#c9828d', center: '#f7de9c', delay: 0.8, sunflower: false },
-  { x: 350, y: 184, size: 0.96, color: '#f7c94e', shade: '#d89a32', center: '#6e4930', delay: 0.9, sunflower: true },
+  { x: 300, y: 129, size: 1.16, color: '#f7c94e', shade: '#d89a32', center: '#6e4930', delay: 0.12, sunflower: true, rose: false },
+  { x: 250, y: 145, size: 0.78, color: '#ed8eaa', shade: '#bb5576', center: '#ffd5d9', delay: 0.2, sunflower: false, rose: false },
+  { x: 350, y: 145, size: 0.82, color: '#d84b7c', shade: '#9e315b', center: '#f7afc0', delay: 0.3, sunflower: false, rose: false },
+  { x: 180, y: 166, size: 0.72, color: '#f7c94e', shade: '#d89a32', center: '#6e4930', delay: 0.38, sunflower: true, rose: false },
+  { x: 217, y: 174, size: 0.76, color: '#c92e43', shade: '#81233a', center: '#f08083', delay: 0.45, sunflower: false, rose: true },
+  { x: 278, y: 177, size: 0.68, color: '#f4dfb7', shade: '#c99d61', center: '#ffefd4', delay: 0.52, sunflower: false, rose: false },
+  { x: 324, y: 176, size: 0.72, color: '#f2b8c5', shade: '#c9728d', center: '#ffe1df', delay: 0.6, sunflower: false, rose: false },
+  { x: 383, y: 174, size: 0.76, color: '#c92e43', shade: '#81233a', center: '#f08083', delay: 0.66, sunflower: false, rose: true },
+  { x: 420, y: 166, size: 0.72, color: '#f7c94e', shade: '#d89a32', center: '#6e4930', delay: 0.72, sunflower: true, rose: false },
+  { x: 193, y: 207, size: 0.68, color: '#f4f0d0', shade: '#a7b477', center: '#fff7df', delay: 0.78, sunflower: false, rose: false },
+  { x: 237, y: 207, size: 0.72, color: '#d32651', shade: '#861b3c', center: '#f37d9b', delay: 0.84, sunflower: false, rose: true },
+  { x: 282, y: 210, size: 0.69, color: '#f2cf62', shade: '#bc8c3d', center: '#fff0b5', delay: 0.9, sunflower: false, rose: false },
+  { x: 329, y: 209, size: 0.7, color: '#f6a6b8', shade: '#bf637f', center: '#ffe2e3', delay: 0.96, sunflower: false, rose: false },
+  { x: 374, y: 207, size: 0.72, color: '#c92e43', shade: '#81233a', center: '#f08083', delay: 1.02, sunflower: false, rose: true },
+  { x: 411, y: 207, size: 0.68, color: '#e5efb1', shade: '#9bb36a', center: '#f9f4dc', delay: 1.08, sunflower: false, rose: false },
+  { x: 153, y: 204, size: 0.56, color: '#f4dfb7', shade: '#c99d61', center: '#ffefd4', delay: 1.15, sunflower: false, rose: false },
+  { x: 447, y: 204, size: 0.56, color: '#f2b8c5', shade: '#c9728d', center: '#ffe1df', delay: 1.22, sunflower: false, rose: false },
+  { x: 215, y: 232, size: 0.53, color: '#f6a6b8', shade: '#bf637f', center: '#ffe2e3', delay: 1.28, sunflower: false, rose: false },
+  { x: 265, y: 236, size: 0.52, color: '#d84b7c', shade: '#9e315b', center: '#f7afc0', delay: 1.34, sunflower: false, rose: true },
+  { x: 335, y: 236, size: 0.52, color: '#f4dfb7', shade: '#c99d61', center: '#ffefd4', delay: 1.4, sunflower: false, rose: false },
+  { x: 385, y: 232, size: 0.53, color: '#d32651', shade: '#861b3c', center: '#f37d9b', delay: 1.46, sunflower: false, rose: true },
 ]
 
-const stems = [
-  'M155 156 C184 215 250 265 294 328',
-  'M195 132 C220 205 265 258 294 327',
-  'M300 92 C300 185 301 249 300 329',
-  'M405 130 C380 205 335 265 306 329',
-  'M445 160 C416 218 350 270 306 328',
-  'M252 181 C263 232 285 276 298 329',
-  'M302 178 C301 235 301 281 300 329',
-  'M350 184 C338 235 316 280 302 329',
-]
+const stems = flowers.map(({ x, y }) => (
+  `M${x} ${y + 12} C${x + (300 - x) * 0.2} ${y + 70} ${285 + (x - 300) * 0.16} 279 ${296 + (x - 300) * 0.04} 380`
+))
 
 const leaves = [
-  { x: 232, y: 231, rotate: -36, delay: 0.2 },
-  { x: 366, y: 237, rotate: 34, delay: 0.4 },
-  { x: 268, y: 276, rotate: -28, delay: 0.65 },
-  { x: 334, y: 280, rotate: 27, delay: 0.8 },
+  { x: 168, y: 224, rotate: -47, delay: 0.2 },
+  { x: 432, y: 224, rotate: 47, delay: 0.4 },
+  { x: 216, y: 244, rotate: -38, delay: 0.5 },
+  { x: 384, y: 244, rotate: 38, delay: 0.65 },
+  { x: 265, y: 260, rotate: -26, delay: 0.8 },
+  { x: 335, y: 260, rotate: 26, delay: 0.95 },
 ]
 
 const fillerSprigs = [
-  { x: 129, y: 222, scale: 0.88, rotate: -9 },
-  { x: 471, y: 222, scale: 0.88, rotate: 9 },
-  { x: 223, y: 207, scale: 0.62, rotate: -8 },
-  { x: 377, y: 207, scale: 0.62, rotate: 8 },
+  { x: 145, y: 234, scale: 0.88, rotate: -10 },
+  { x: 455, y: 234, scale: 0.88, rotate: 10 },
+  { x: 229, y: 227, scale: 0.62, rotate: -8 },
+  { x: 371, y: 227, scale: 0.62, rotate: 8 },
 ]
 
 const fillerBuds = [
@@ -62,13 +70,13 @@ export function BouquetAnimation() {
       >
         <div className="eyebrow"><span /> THE BEST PART <span /></div>
         <h1>I LOVE YOU,<br /><em>BEYBB</em> <span>💐</span></h1>
-        <p>Carnations, sunflowers &amp; little blossoms, just for you.</p>
+        <p>A bright bouquet of flowers, wrapped up just for you.</p>
       </motion.div>
 
       <div
         className="bouquet-canvas"
         role="img"
-        aria-label="A three-dimensional bouquet of carnations, three sunflowers, baby's-breath fillers and greenery"
+        aria-label="A three-dimensional mixed bouquet with carnations, roses, three sunflowers, baby's-breath fillers and gold wrapping"
       >
         <motion.div
           className="bouquet-halo"
@@ -83,7 +91,7 @@ export function BouquetAnimation() {
 
         <motion.svg
           className="bouquet-art"
-          viewBox="0 0 600 430"
+          viewBox="0 0 600 470"
           role="presentation"
           aria-hidden="true"
           initial={reduceMotion ? undefined : { opacity: 0, scale: 0.92, rotateY: -5, y: 12 }}
@@ -111,34 +119,39 @@ export function BouquetAnimation() {
         >
           <defs>
             <linearGradient id="bouquet-paper" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stopColor="#fff2e7" />
-              <stop offset=".48" stopColor="#e8c6b5" />
-              <stop offset="1" stopColor="#c89187" />
+              <stop offset="0" stopColor="#fff0a9" />
+              <stop offset=".45" stopColor="#e6a62f" />
+              <stop offset="1" stopColor="#bd711e" />
             </linearGradient>
             <linearGradient id="bouquet-paper-fold" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stopColor="#c48a83" />
-              <stop offset=".5" stopColor="#f7dfcf" />
-              <stop offset="1" stopColor="#bd817d" />
+              <stop offset="0" stopColor="#a96428" />
+              <stop offset=".5" stopColor="#ffe69a" />
+              <stop offset="1" stopColor="#b96a20" />
             </linearGradient>
             <linearGradient id="bouquet-leaf" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stopColor="#9bb28a" />
-              <stop offset="1" stopColor="#58765c" />
+              <stop offset="0" stopColor="#b3c88b" />
+              <stop offset=".5" stopColor="#6f965e" />
+              <stop offset="1" stopColor="#3e694d" />
             </linearGradient>
             <radialGradient id="bouquet-center">
               <stop offset="0" stopColor="#fff2b8" />
               <stop offset=".72" stopColor="#e8b95f" />
               <stop offset="1" stopColor="#c78d45" />
             </radialGradient>
+            <pattern id="burlap-weave" width="8" height="8" patternUnits="userSpaceOnUse">
+              <path d="M0 1H8 M0 5H8 M1 0V8 M5 0V8" stroke="#9a693b" strokeWidth=".8" opacity=".58" />
+              <path d="M0 3H8 M3 0V8" stroke="#ffe3ad" strokeWidth=".55" opacity=".62" />
+            </pattern>
           </defs>
 
-          <ellipse cx="300" cy="372" rx="118" ry="20" fill="#a67770" opacity=".13" />
+          <ellipse cx="300" cy="425" rx="128" ry="20" fill="#79583a" opacity=".15" />
 
           <g className="bouquet-stems" fill="none" stroke="#668166" strokeLinecap="round">
             {stems.map((stem, index) => (
               <motion.path
                 key={stem}
                 d={stem}
-                strokeWidth={index === 2 ? 5 : 4}
+                strokeWidth={Math.abs((flowers[index]?.x ?? 300) - 300) < 1 ? 5 : 3.5}
                 initial={reduceMotion ? undefined : { pathLength: 0, opacity: 0 }}
                 animate={{ pathLength: 1, opacity: 1 }}
                 transition={{ duration: reduceMotion ? 0 : 1.1, delay: reduceMotion ? 0 : 0.25 + index * 0.1 }}
@@ -161,22 +174,30 @@ export function BouquetAnimation() {
           ))}
 
           <path
-            d="M179 210 Q300 258 421 210 L347 379 Q301 411 253 379Z"
+            d="M143 297 Q300 340 457 297 L366 414 Q301 454 234 414Z"
             fill="url(#bouquet-paper)"
-            stroke="#b98079"
+            stroke="#b57527"
             strokeWidth="2"
           />
-          <path d="M179 210 Q224 242 267 251 L253 379Z" fill="#fff5e9" opacity=".58" />
-          <path d="M421 210 Q378 242 334 251 L347 379Z" fill="#b77d79" opacity=".22" />
-          <path d="M195 218 Q299 275 405 218 L342 365 Q299 390 258 365Z" fill="none" stroke="url(#bouquet-paper-fold)" strokeWidth="3" opacity=".78" />
-          <path d="M223 234 Q279 273 300 385 M377 234 Q322 274 300 385" fill="none" stroke="#fff7ed" strokeWidth="2" opacity=".5" />
+          <path d="M176 299 L78 158 L105 311 L254 394 L279 347Z" fill="#e8a72d" stroke="#c47b24" strokeWidth="2" />
+          <path d="M424 299 L522 158 L495 311 L346 394 L321 347Z" fill="#e8a72d" stroke="#c47b24" strokeWidth="2" />
+          <path d="M176 299 L103 194 L150 316 L254 394 L235 338Z" fill="#ffd86b" opacity=".83" />
+          <path d="M424 299 L497 194 L450 316 L346 394 L365 338Z" fill="#f4c04d" opacity=".78" />
+          <path d="M143 297 Q218 322 285 327 L234 414Z" fill="#fff0a1" opacity=".53" />
+          <path d="M457 297 Q382 322 315 327 L366 414Z" fill="#a85c1d" opacity=".2" />
+          <path d="M159 305 Q300 353 441 305 L359 399 Q300 428 241 399Z" fill="none" stroke="url(#bouquet-paper-fold)" strokeWidth="4" opacity=".88" />
+          <path d="M190 318 Q255 355 267 414 M410 318 Q345 355 333 414" fill="none" stroke="#fff1b4" strokeWidth="3" opacity=".55" />
+          <path d="M198 354 Q300 390 402 354 L385 391 Q300 420 215 391Z" fill="#b78855" stroke="#8c603b" strokeWidth="1.5" />
+          <path d="M198 354 Q300 390 402 354 L385 391 Q300 420 215 391Z" fill="url(#burlap-weave)" opacity=".72" />
 
           <g className="bouquet-ribbon">
-            <path d="M296 327 C268 300 245 313 263 335 C273 347 286 342 300 333Z" fill="#b96673" stroke="#9e5261" strokeWidth="2" />
-            <path d="M304 327 C331 300 354 313 337 335 C327 347 314 342 300 333Z" fill="#d78b8b" stroke="#ad626e" strokeWidth="2" />
-            <path d="M292 334 L274 365 L299 353 L307 368 L310 334Z" fill="#c87880" stroke="#a95d69" strokeWidth="1.5" />
-            <ellipse cx="300" cy="330" rx="9" ry="8" fill="#f0b0a3" stroke="#a95d69" strokeWidth="1.5" />
-            <path d="M266 321 Q279 320 289 330 M334 321 Q321 320 311 330" fill="none" stroke="#f2c3b4" strokeWidth="2" opacity=".8" />
+            <path d="M294 378 C261 337 218 349 242 388 C259 411 280 398 300 384Z" fill="#d99025" stroke="#a96920" strokeWidth="2.5" />
+            <path d="M306 378 C339 337 382 349 358 388 C341 411 320 398 300 384Z" fill="#f5c04c" stroke="#a96920" strokeWidth="2.5" />
+            <path d="M293 386 L258 440 L300 421 L310 446 L308 385Z" fill="#e4a42f" stroke="#a96920" strokeWidth="2" />
+            <path d="M307 386 L342 440 L300 421 L290 446 L292 385Z" fill="#ffd66b" stroke="#a96920" strokeWidth="2" />
+            <path d="M294 378 C263 354 240 363 252 385 M306 378 C337 354 360 363 348 385" fill="none" stroke="#fff0ae" strokeWidth="3" opacity=".9" />
+            <ellipse cx="300" cy="384" rx="13" ry="11" fill="#f5cb66" stroke="#a96920" strokeWidth="2" />
+            <path d="M294 384 Q300 374 306 384 Q300 393 294 384Z" fill="#fff0ae" />
           </g>
 
           <g className="bouquet-fillers" fill="none" stroke="#7c956f" strokeLinecap="round" strokeLinejoin="round">
@@ -272,7 +293,60 @@ export function BouquetAnimation() {
                         })}
                       </>
                     )
-                  : (
+                  : flower.rose
+                    ? (
+                        <>
+                          <circle cx="0" cy="0" r="29" fill={flower.shade} opacity=".38" transform="translate(3 4)" />
+                          {Array.from({ length: 10 }, (_, petal) => (
+                            <ellipse
+                              key={`outer-${petal}`}
+                              cx="0"
+                              cy="-13"
+                              rx="11"
+                              ry="15"
+                              fill={flower.shade}
+                              stroke="#f58b91"
+                              strokeWidth="1.2"
+                              transform={`rotate(${petal * 36})`}
+                            />
+                          ))}
+                          {Array.from({ length: 9 }, (_, petal) => (
+                            <ellipse
+                              key={`middle-${petal}`}
+                              cx="0"
+                              cy="-9"
+                              rx="8"
+                              ry="12"
+                              fill={flower.color}
+                              stroke="#f78a96"
+                              strokeWidth="1"
+                              transform={`rotate(${petal * 40 + 18})`}
+                            />
+                          ))}
+                          {Array.from({ length: 7 }, (_, petal) => (
+                            <ellipse
+                              key={`inner-${petal}`}
+                              cx="0"
+                              cy="-5"
+                              rx="5.5"
+                              ry="8"
+                              fill={flower.center}
+                              stroke="#ffd2c8"
+                              strokeWidth=".8"
+                              transform={`rotate(${petal * (360 / 7)})`}
+                            />
+                          ))}
+                          <path
+                            d="M-5 3 C-11-3-5-11 2-9 C9-7 6 1 0 0 C-3 0-3-4 0-5"
+                            fill="none"
+                            stroke={flower.shade}
+                            strokeWidth="2.4"
+                            strokeLinecap="round"
+                          />
+                          <circle cx="-2" cy="-4" r="1.5" fill="#ffd2c8" />
+                        </>
+                      )
+                    : (
                       <>
                         <circle cx="0" cy="0" r="31" fill={flower.shade} opacity=".5" transform="translate(3 4)" />
                         {Array.from({ length: 20 }, (_, petal) => (
@@ -351,4 +425,7 @@ export function BouquetAnimation() {
         <span>I love you, beybb.</span>
         <span className="always">Always. 💋</span>
         <Sparkles size={15} aria-hidden="true" />
-      </motion
+      </motion.div>
+    </motion.section>
+  )
+}
