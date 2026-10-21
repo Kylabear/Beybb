@@ -55,6 +55,7 @@ export function BouquetAnimation() {
   const reduceMotion = useReducedMotion()
 
   return (
+    <>
     <motion.section
       className="final-scene"
       initial={{ opacity: 0 }}
@@ -70,7 +71,8 @@ export function BouquetAnimation() {
       >
         <div className="eyebrow"><span /> THE BEST PART <span /></div>
         <h1>I LOVE YOU,<br /><em>BEYBB</em> <span>💐</span></h1>
-        <p>A bright bouquet of flowers, wrapped up just for you.</p>
+        <p>A digital bouquet of flowers, wrapped up just for you.</p>
+        
       </motion.div>
 
       <div
@@ -425,5 +427,7 @@ export function BouquetAnimation() {
         <Sparkles size={15} aria-hidden="true" />
       </motion.div>
     </motion.section>
+    <p>Just a Teaser for now HAHAHAHH😊</p>
+    </>
   )
 }

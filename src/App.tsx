@@ -99,7 +99,7 @@ function App() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.48, duration: 0.7 }}
               >
-                I have a little question for you...
+                Do you love me?
               </motion.p>
               <PlayfulButton scene="landing" />
               <div className="card-bottom-note">

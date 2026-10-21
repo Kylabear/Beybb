@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 const landingMessages = [
   'Are you sure? 🥺',
   'Beybb... really? 😭',
-  "You're making me chase this button, huh? 😂",
+  "Dont lie to yourself beybb 😂",
   'Nice try 😏',
 ]
 

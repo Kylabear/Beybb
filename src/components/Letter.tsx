@@ -5,17 +5,19 @@ import { Envelope } from './Envelope'
 import { TypingText } from './TypingText'
 import { PlayfulButton } from './PlayfulButton'
 
-const letterText = `Happy birthday, beybb. 🎂🎉
+const letterText = `Happy birthday, my beybbii! 🥹❤️🎂
 
-It's your day today, but somehow, I'm the one who feels lucky. I get to celebrate the existence of someone who has become so important to me in ways I never expected. I hope this year brings you closer to the life you've always wanted, gives you courage when things feel uncertain, and reminds you that you deserve good things, even on the days when you struggle to see them yourself. You have so many beautiful things ahead of you, and I hope you never stop believing in yourself. 🌷✨
+It's your day today, pero somehow, ako pa yata yung mas lucky because I get to have someone like you in my life. I hope this new chapter brings you genuine happiness, peace of mind, and more reasons to believe in yourself. Never forget that you deserve all the good things life has to offer. 🌷✨
 
-I hope we never lose our willingness to understand each other, even when things aren't easy. I'm not here because I expect everything to be perfect; I'm here because what we have means something to me. I want to keep discovering more of you, growing alongside you, and giving whatever we have the time, patience, and care it deserves. 🫶💗
+As for us, I hope we never lose our willingness to understand each other, even when things aren't easy. I know we won't always get everything right, but I hope we keep choosing to listen, communicate, and meet each other halfway. I want to keep growing with you, celebrating your little wins, and being there for you, not just on your happiest days, but also on your sad and ordinary ones.
 
-If there's one thing I wish for you, it's to see you achieve the things you dream of, celebrate even your smallest victories with you, and be there for the ordinary days that somehow become the most memorable. I can't tell you exactly what tomorrow holds, but I'm happy that, right now, I get to have you in my life. Happy birthday, my beybbii. I hope life is gentle with you, and I hope I get to be part of many more chapters of your story. 🎈🌟
+And whenever life feels too heavy, I hope you remember that you have me. Maybe I'm not always good at comforting you with words, but I'll always be willing to listen and understand you. You don't have to pretend to be okay all the time.
 
-I love you, beybb. Always. 😘❤️`
+Beybb, I want you for life. ❤️ You're already part of the future I imagine for myself, sa mga bagay na gusto kong ma-achieve, sa mga places na gusto kong puntahan, and sa mga memories na gusto kong gawin. I don't know exactly what the future holds for us, but I know that when I think about the things I want to happen in my life, you're always someone I want beside me. I hope we get to grow together, figure life out together, and make those little dreams come true, one day at a time. I hope I get to watch you grow into the person you want to be and celebrate many more birthdays with you. I'm really glad that, in this lifetime, our paths crossed.
 
-interface LetterProps {
+Happy birthday again, beybb! I love you, always. 😘❤️🌷`
+
+interface LetterProps {                            
   opened: boolean
   typingComplete: boolean
   onTypingComplete: () => void
