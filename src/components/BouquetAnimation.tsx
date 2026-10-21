@@ -71,7 +71,7 @@ export function BouquetAnimation() {
       >
         <div className="eyebrow"><span /> THE BEST PART <span /></div>
         <h1>I LOVE YOU,<br /><em>BEYBB</em> <span>💐</span></h1>
-        <p>A digital bouquet of flowers, wrapped up just for you.</p>
+        <p>A bouquet of flowers, wrapped up just for you.</p>
         
       </motion.div>
 
